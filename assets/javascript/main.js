@@ -9,10 +9,11 @@ $(document).ready(function() {
     
 var randNum = Math.floor(Math.random() * (120-19) + 19);
         $("#target").html(randNum);
-
+console.log('NUM OPTIONS BEFORE ', numOptions)
 for (var a = 0; a < 4; a ++) {
     numOptions[a] = Math.floor(Math.random() * (12-1) + 1);
 }
+console.log('NUM OPTIONS AFTER ', numOptions)
 
 $("#youWin").html("Wins = " + wins);
 $("#youLose").html("Losses = " + losses);
@@ -34,13 +35,13 @@ $(".crystal-image").on("click", function() {
 
 if (counter === randNum) {
     alert("Congrats, you win!");
-    $(wins ++ ).append("#youWin");
+    wins++
     $("#youWin").html("Wins = " + wins);
 }
 else if (counter > randNum) {
     alert("Sorry, you lose");
-    $(losses ++ ).append("#youLose");
-    $("#youLose").html("Losses = " + losses);
+    losses++
+   $("#youLose").html("Losses = " + losses);
 }
 });   
 
@@ -48,36 +49,18 @@ $("#replay").click(function() {
     
     counter = 0;
     $("#howManyNow").html(0);
-    var randNum = Math.floor(Math.random() * (120-19) + 19);
+    randNum = Math.floor(Math.random() * (120-19) + 19);
    $("#target").html(randNum);
-   for (var a = 0; a < 4; a ++) {
-    numOptions[a] = Math.floor(Math.random() * (12-1) + 1);
-    }
+//    for (let a = 0; a < 4; a ++) {
+//     numOptions[a] = Math.floor(Math.random() * (12-1) + 1);
+//     var img = $("<img>");
+//     (".crystal-image:eq("+a+")").attr("data-value", numOptions[i]);
+//     }
+$('.crystal-image').each(function(i) {
+    console.log('i ', i)
+    $(this).attr("data-value", Math.floor(Math.random() * (12-1) + 1));
+})
+    console.log('NUM OPTIONS RESET ', numOptions)
 });
 
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
