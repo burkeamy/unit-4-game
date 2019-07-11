@@ -6,7 +6,8 @@ var numOptions = []
 var images = ["blueCrystal.png", "greenCrystal.png", "colorCrystals.png", "purple.png"]
 
 $(document).ready(function() {
-    
+
+//creating the random target number
 var randNum = Math.floor(Math.random() * (120-19) + 19);
         $("#target").html(randNum);
 console.log('NUM OPTIONS BEFORE ', numOptions)
@@ -15,6 +16,7 @@ for (var a = 0; a < 4; a ++) {
 }
 console.log('NUM OPTIONS AFTER ', numOptions)
 
+//keeping track of wins and losses
 $("#youWin").html("Wins = " + wins);
 $("#youLose").html("Losses = " + losses);
 $("#howManyNow").html(0);
@@ -27,6 +29,7 @@ for (var i = 0; i < 4; i++ ){
     $("#crystals").append(img);
 }
 
+// increaseing the counter
 $(".crystal-image").on("click", function() {
     counter += parseInt($(this).data("value"));
     $(counter).addClass("howManyNow");
@@ -51,11 +54,7 @@ $("#replay").click(function() {
     $("#howManyNow").html(0);
     randNum = Math.floor(Math.random() * (120-19) + 19);
    $("#target").html(randNum);
-//    for (let a = 0; a < 4; a ++) {
-//     numOptions[a] = Math.floor(Math.random() * (12-1) + 1);
-//     var img = $("<img>");
-//     (".crystal-image:eq("+a+")").attr("data-value", numOptions[i]);
-//     }
+
 $('.crystal-image').each(function(i) {
     console.log('i ', i)
     $(this).attr("data-value", Math.floor(Math.random() * (12-1) + 1));
